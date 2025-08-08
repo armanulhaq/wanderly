@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import "tailwindcss";
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: "Noto Sans", sans-serif;
+}
+
+.bg-subtle-purple {
+    background: radial-gradient(
+            circle at top left,
+            rgba(155, 100, 255, 0.18),
+            transparent 60%
+        ),
+        #0f0f11; /* kept deep dark gray as base */
+}
