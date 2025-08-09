@@ -29,6 +29,14 @@ const Plan = () => {
                     return;
                 }
                 const data = await res.json();
+                //{
+                //type: "user/setUser",
+                //payload: {
+                //name: "Alice",
+                //email: "alice@example.com"
+                //}
+                //}
+                //sends data like this to the Redux store
                 dispatch(setUser(data.user));
             } catch (error) {
                 console.log(error);

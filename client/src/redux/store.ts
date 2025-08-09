@@ -7,6 +7,7 @@ export const store = configureStore({
         user: userSlice.reducer, //Registers a slice called user (so the store will have state.user).
     },
 });
+//Creates a store and tells Redux: ‘for the user part of state, use the logic from userSlice.reducer.’
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
