@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-const Plan = () => {
-    type User = {
-        message: string;
-        user: {
-            name: string;
-            email: string;
-        };
-    };
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { setUser } from "../redux/slices/user/user";
 
+const Plan = () => {
     const [loading, setLoading] = useState<boolean>(false);
-    const [user, setUser] = useState<User | null>(null);
+    const dispatch = useAppDispatch(); //gives a function you can call to write to the store.
+    const user = useAppSelector((state) => state.user); // reads the current user from the store.
+    console.log(user);
+
     const navigate = useNavigate();
     useEffect(() => {
         const fetchUser = async () => {
@@ -31,7 +29,7 @@ const Plan = () => {
                     return;
                 }
                 const data = await res.json();
-                setUser(data);
+                dispatch(setUser(data.user));
             } catch (error) {
                 console.log(error);
                 navigate("/login");
@@ -40,7 +38,7 @@ const Plan = () => {
             }
         };
         fetchUser();
-    }, []);
+    }, [dispatch, navigate]);
 
     const logoutHandler = async () => {
         try {
@@ -58,6 +56,7 @@ const Plan = () => {
             if (!res.ok) {
                 throw new Error("Failed to logout");
             }
+            dispatch(setUser({ name: "", email: "" })); // I tell the backend to clear the cookie, then I clear the store and send the user to login.
             navigate("/login");
         } catch (error) {
             console.log(error);
@@ -72,8 +71,8 @@ const Plan = () => {
             ) : (
                 <div>
                     <h1>Plan</h1>
-                    <p>{user?.user.name}</p>
-                    <p>{user?.user.email}</p>
+                    <p>{user?.name}</p>
+                    <p>{user?.email}</p>
                 </div>
             )}
             <button
