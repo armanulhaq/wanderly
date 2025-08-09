@@ -1,8 +1,10 @@
 import { Sparkles } from "lucide-react";
 import Navbar from "../components/Navbar";
 import homeIllustration from "../assets/Home.png";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+    const navigate = useNavigate();
     return (
         <>
             <Navbar />
@@ -26,7 +28,10 @@ const Home = () => {
                         </p>
 
                         <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                            <button className="flex items-center justify-center gap-2 px-6 py-3 bg-purple-500/50 hover:bg-purple-600/50 text-white rounded-lg font-medium transition-colors cursor-pointer">
+                            <button
+                                onClick={() => navigate("/plan")}
+                                className="flex items-center justify-center gap-2 px-6 py-3 bg-purple-500/50 hover:bg-purple-600/50 text-white rounded-lg font-medium transition-colors cursor-pointer"
+                            >
                                 <Sparkles className="w-5 h-5" />
                                 Plan My Trip
                             </button>

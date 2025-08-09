@@ -1,14 +1,47 @@
 import { Lock, Mail, User } from "lucide-react";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Register = () => {
     const navigate = useNavigate();
+
+    const [loading, setLoading] = useState<boolean>(false);
+    const [name, setName] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+
+    const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        try {
+            setLoading(true);
+            const res = await fetch("http://localhost:3000/api/auth/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name, email, password }),
+            });
+            if (!res.ok) {
+                throw new Error("Failed to register");
+            }
+            const data = await res.json();
+            console.log(data);
+            navigate("/login");
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setLoading(false);
+        }
+    };
     return (
         <div className="bg-subtle-purple flex items-center justify-center min-h-screen">
             <Navbar />
 
-            <form className="max-w-md w-full bg-gray-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl px-8 py-10 shadow-lg">
+            <form
+                onSubmit={handleRegister}
+                className="max-w-md w-full mx-6 bg-gray-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl px-8 py-10 shadow-lg"
+            >
                 <div className="mb-6 flex flex-col justify-center items-center gap-2">
                     <h1 className="text-3xl font-bold text-white">
                         Create an account
@@ -24,6 +57,8 @@ const Register = () => {
                         placeholder="Full name"
                         className="bg-transparent text-gray-200 placeholder-gray-500 outline-none text-sm w-full h-full"
                         required
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                     />
                 </div>
 
@@ -34,6 +69,8 @@ const Register = () => {
                         placeholder="Email address"
                         className="bg-transparent text-gray-200 placeholder-gray-500 outline-none text-sm w-full h-full"
                         required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
 
@@ -44,23 +81,16 @@ const Register = () => {
                         placeholder="Password"
                         className="bg-transparent text-gray-200 placeholder-gray-500 outline-none text-sm w-full h-full"
                         required
-                    />
-                </div>
-                <div className="flex items-center mt-4 w-full bg-gray-800/60 border border-gray-700/60 h-12 rounded-full overflow-hidden pl-6 gap-3">
-                    <Lock className="w-5 h-5 text-gray-400" />
-                    <input
-                        type="password"
-                        placeholder="Confirm password"
-                        className="bg-transparent text-gray-200 placeholder-gray-500 outline-none text-sm w-full h-full"
-                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
 
                 <button
                     type="submit"
-                    className="mt-6 w-full h-11 rounded-full text-white bg-purple-500/50 hover:bg-purple-600/50 transition-colors font-medium"
+                    className="mt-6 w-full h-11 rounded-full text-white bg-purple-500/50 hover:bg-purple-600/50 transition-colors font-medium cursor-pointer"
                 >
-                    Sign Up
+                    {loading ? "Registering..." : "Sign Up"}
                 </button>
 
                 <p className="text-gray-400 text-sm mt-6 text-center">
