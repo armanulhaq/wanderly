@@ -2,9 +2,12 @@ import { Lock, Mail } from "lucide-react";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useAppDispatch } from "../redux/hooks";
+import { setUser } from "../redux/slices/user/user";
 
 const Login = () => {
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -24,6 +27,9 @@ const Login = () => {
             if (!res.ok) {
                 throw new Error("Failed to login");
             }
+            const data = await res.json();
+            console.log(data);
+            dispatch(setUser(data.user));
         } catch (error) {
             console.log(error);
         } finally {
