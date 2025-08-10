@@ -29,6 +29,10 @@ const Login = () => {
             }
             const data = await res.json();
             console.log(data);
+            //{
+            // type: "user/setUser",   // action type
+            // payload: { name: "...", email: "..." }  // my user data
+            //}
             dispatch(setUser(data.user));
         } catch (error) {
             console.log(error);
@@ -42,7 +46,7 @@ const Login = () => {
             <Navbar />
             <form
                 onSubmit={handleLogin}
-                className="max-w-md w-full mx-6 bg-gray-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl px-8 py-10 shadow-lg"
+                className="max-w-md w-full bg-gray-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl mx-auto px-8 md:px-12 py-10 shadow-lg"
             >
                 <div className="mb-6 flex flex-col justify-center items-center gap-2">
                     <h1 className="text-3xl font-bold text-white">Login</h1>

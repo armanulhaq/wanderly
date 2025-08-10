@@ -4,12 +4,19 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./configs/DB.ts";
 import authenticationRoute from "./routes/authentication.route.ts";
+import googlePlacesRouter from "./routes/googlePlaces.route.ts";
 
 connectDB();
 dotenv.config();
 
 const app = express();
-app.use(cors({ credentials: true, origin: process.env.FRONTEND_URL }));
+app.use(
+    cors({
+        origin: process.env.FRONTEND_URL, // frontend URL
+        methods: ["GET", "POST"],
+        credentials: true, // if you're using cookies or sessions
+    })
+);
 app.use(express.json());
 app.use(cookieParser());
 
@@ -18,6 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authenticationRoute);
+app.use("/api/google", googlePlacesRouter);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log(`Server is running on port ${process.env.PORT || 3000}`);

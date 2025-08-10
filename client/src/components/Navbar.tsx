@@ -33,7 +33,7 @@ const Navbar = () => {
     };
     return (
         <header className="absolute top-0 left-0 right-0 z-10">
-            <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <nav className="max-w-6xl mx-auto px-8 md:px-12 py-4 flex justify-between items-center">
                 <div
                     onClick={() => navigate("/")}
                     className="text-xl font-bold text-white cursor-pointer"
@@ -41,7 +41,7 @@ const Navbar = () => {
                     Wanderly
                 </div>
                 <div className="flex items-center gap-4">
-                    {user ? (
+                    {user.name ? (
                         <div className="flex items-center gap-6">
                             <p className="cursor-pointer text-sm text-white">
                                 Hey, {user.name}

@@ -40,7 +40,7 @@ const Register = () => {
 
             <form
                 onSubmit={handleRegister}
-                className="max-w-md w-full mx-6 bg-gray-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl px-8 py-10 shadow-lg"
+                className="max-w-md w-full mx-auto px-8 md:px-12 bg-gray-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl py-10 shadow-lg"
             >
                 <div className="mb-6 flex flex-col justify-center items-center gap-2">
                     <h1 className="text-3xl font-bold text-white">

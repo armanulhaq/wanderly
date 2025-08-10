@@ -9,7 +9,7 @@ const Home = () => {
         <>
             <Navbar />
             <section className="bg-subtle-purple min-h-screen text-gray-100 flex items-center">
-                <main className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12">
+                <main className="max-w-6xl mx-auto px-8 md:px-12 py-16 grid md:grid-cols-2 gap-12">
                     <div className="flex flex-col justify-center">
                         <div className="inline-flex items-center gap-2 bg-purple-600/30 px-3 py-1 rounded-full text-purple-300 text-sm w-fit">
                             <Sparkles className="w-4 h-4" />
