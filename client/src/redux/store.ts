@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { userSlice } from "./slices/user/user";
+import { tripSlice } from "./slices/trip/trip";
 
 //creates one global store for storing data
 export const store = configureStore({
     reducer: {
         user: userSlice.reducer, //Registers a slice called user (so the store will have state.user).
+        trip: tripSlice.reducer,
     },
 });
 //Creates a store and tells Redux: ‘for the user part of state, use the logic from userSlice.reducer.’
