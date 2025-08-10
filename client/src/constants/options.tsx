@@ -2,50 +2,49 @@ export const SelectTravelList = [
     {
         id: 1,
         title: "Just Me",
-        desc: "Solo traveler in exploration",
+        desc: "Exploring the world, one solo adventure at a time.",
         icon: "✈️",
         people: "1",
     },
     {
         id: 2,
-        title: "A couple",
-        desc: "Two travelers in tandem",
+        title: "A Couple",
+        desc: "Two hearts, one unforgettable journey.",
         icon: "🥂",
         people: "2 People",
     },
     {
         id: 3,
         title: "Family",
-        desc: "A group of adventurers",
+        desc: "Creating memories together, from kids to grandparents.",
         icon: "🏠",
-        people: "3 to 5 People",
+        people: "3–5 People",
     },
     {
         id: 4,
         title: "Friends",
-        desc: "A bunch of thrill seekers",
+        desc: "Adventures are better when shared with the crew.",
         icon: "🚤",
-        people: "5 - 10 People",
+        people: "5–10 People",
     },
 ];
-
 export const SelectBudgetOptions = [
     {
         id: 1,
         title: "Saver",
-        desc: "Affordable options for budget-friendly travel.",
+        desc: "Smart choices for cost-conscious travelers.",
         icon: "💵",
     },
     {
         id: 2,
         title: "Comfort",
-        desc: "A balance of value and convenience.",
+        desc: "A perfect blend of value and convenience.",
         icon: "💸",
     },
     {
         id: 3,
         title: "Luxury",
-        desc: "Premium experiences with top-tier amenities.",
+        desc: "Indulge in the finest experiences and amenities.",
         icon: "💰",
     },
 ];
