@@ -100,42 +100,7 @@ const Itinerary = () => {
                     ))}
                 </div>
 
-                <div className="px-6 py-4 bg-white border border-gray-200 rounded-lg flex-1 shadow-sm h-fit space-y-8">
-                    {/* <div>
-                        <h3 className="font-semibold text-lg text-gray-900 mb-4">
-                            Trip Budget Breakdown
-                        </h3>
-                        <p className="text-gray-700 font-medium mb-1">
-                            Total Budget ≈{" "}
-                            <span className="text-purple-600 font-bold">
-                                ₹ {itinerary?.budgetBreakdown?.totalBudget}
-                            </span>
-                        </p>
-                        <ul className="space-y-2">
-                            {itinerary?.budgetBreakdown?.categories &&
-                                Object.entries(
-                                    itinerary.budgetBreakdown.categories
-                                ).map(([key, value]: any) => (
-                                    <li
-                                        key={key}
-                                        className="flex justify-between items-center bg-purple-50 rounded-lg px-3 py-2 border border-purple-100"
-                                    >
-                                        <div>
-                                            <p className="capitalize text-gray-800 font-medium">
-                                                {key.replace(/_/g, " ")}
-                                            </p>
-                                            <p className="text-xs text-gray-500">
-                                                {value.percentage}%
-                                            </p>
-                                        </div>
-                                        <span className="text-purple-700 font-semibold">
-                                            ₹ {value.amount}
-                                        </span>
-                                    </li>
-                                ))}
-                        </ul>
-                    </div> */}
-
+                <div className="px-6 py-4 bg-white rounded-lg flex-1 border-1 border-gray-100 h-fit space-y-8">
                     {/* Recommended Accommodations */}
                     <div>
                         <h3 className="font-semibold text-lg text-gray-900 mb-3">

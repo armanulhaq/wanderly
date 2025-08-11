@@ -31,7 +31,7 @@ const askGemini = async (req: Request, res: Response) => {
         - Budget Type: ${budget}  // Possible values: "saver", "comfort", or "luxury"
 
         Requirements:
-        - Estimate a realistic totalBudget in INR based on the budget type:
+        - Estimate a realistic totalCost in INR based on the budget type:
           Saver = low cost, Comfort = moderate cost, Luxury = high cost.
         - All amounts must be numbers in INR without the ₹ symbol or commas.
         - All ratings must be numbers (1 decimal allowed).
@@ -46,10 +46,9 @@ const askGemini = async (req: Request, res: Response) => {
             "title": "string",
             "subtitle": "string",
             "location": "string",
-            "durationDays": number,
-            "travelers": number,
-            "tripRating": number,
-            "totalBudget": number
+            "aiTripRating": number,
+            "estimatedCost": number,
+            "overallWeather": string
           },
           "dailyItinerary": [
             {
@@ -64,26 +63,15 @@ const askGemini = async (req: Request, res: Response) => {
                 }
               ]
             }
-          ],
-          "budgetBreakdown": {
-            "totalBudget": number,
-            "remaining": number,
-            "categories": {
-              "accommodation": { "amount": number, "percentage": number },
-              "flights": { "amount": number, "percentage": number },
-              "dining": { "amount": number, "percentage": number },
-              "activities_entertainment": { "amount": number, "percentage": number },
-              "transportation": { "amount": number, "percentage": number }
-            }
-          },
+          ]
           "travelTips": [
             { "title": "string", "description": "string" }
           ],
           "recommendedAccommodations": [
-            { "name": "string", "location": "string", "rating": number, "type": "string", "pricePerNight": number, "description": "string" }
+            { "name": "string", "location": "string", "rating": number, "type": "string", "priceRangePerNight": number, "description": "string" }
           ],
           "diningOptions": [
-            { "name": "string", "location": "string", "rating": number, "cuisine": "string", "priceRange": number, "description": "string" }
+            { "name": "string", "location": "string", "rating": number, "cuisine": "string", "priceRangePerPerson": number, "description": "string" }
           ]
         }
 
