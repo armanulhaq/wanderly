@@ -9,9 +9,11 @@ import { useAppDispatch } from "./redux/hooks";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { setUser } from "./redux/slices/user/user";
+import { useNavigate } from "react-router-dom";
 
 function App() {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const checkUser = async () => {
@@ -23,6 +25,12 @@ function App() {
                     },
                     credentials: "include",
                 });
+                if (!res.ok) {
+                    // If token invalid, clear Redux user and send to login
+                    dispatch(setUser({ name: "", email: "" }));
+                    navigate("/login");
+                    return;
+                }
                 if (res.ok) {
                     const data = await res.json();
                     if (data && data.user.name) {
