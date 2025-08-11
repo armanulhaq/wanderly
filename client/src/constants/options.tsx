@@ -1,31 +1,27 @@
 export const SelectTravelList = [
     {
-        count: 1,
         title: "Just Me",
         desc: "Exploring the world, one solo adventure at a time.",
         icon: "✈️",
         people: "1",
     },
     {
-        count: 2,
-        title: "A Couple",
-        desc: "Two hearts, one unforgettable journey.",
+        title: "A Duo",
+        desc: "Perfect for two people, whether friends, partners, or family.",
         icon: "🥂",
         people: "2 People",
     },
     {
-        count: 3,
-        title: "Family",
+        title: "Small Group",
         desc: "Creating memories together, from kids to grandparents.",
         icon: "🏠",
-        people: "3–5 People",
+        people: "4–5 People",
     },
     {
-        count: 4,
-        title: "Friends",
+        title: "Large Group",
         desc: "Adventures are better when shared with the crew.",
         icon: "🚤",
-        people: "5–10 People",
+        people: "5–7 People",
     },
 ];
 

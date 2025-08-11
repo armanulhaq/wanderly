@@ -31,6 +31,14 @@ const Plan = () => {
     const [toDate, setToDate] = useState("");
 
     const trip = useAppSelector((state) => state.trip);
+    // Utility function to add days to a date string (YYYY-MM-DD)
+    const addDays = (dateStr: string, days: number) => {
+        const date = new Date(dateStr);
+        date.setDate(date.getDate() + days);
+
+        // Format back to YYYY-MM-DD
+        return date.toISOString().split("T")[0];
+    };
 
     const fetchPlaces = async (input: string) => {
         if (!input.trim()) {
@@ -82,6 +90,7 @@ const Plan = () => {
             })
         );
     };
+    console.log(trip);
 
     const onGenerateTrip = async () => {
         const res = await fetch("http://localhost:3000/api/askgemini", {
@@ -204,6 +213,11 @@ const Plan = () => {
                                         type="date"
                                         value={toDate}
                                         min={fromDate || today} // cannot be before fromDate
+                                        max={
+                                            fromDate
+                                                ? addDays(fromDate, 3)
+                                                : addDays(today, 3)
+                                        } // max 4 days after fromDate or today
                                         onChange={(e) => {
                                             const newTo = e.target.value;
                                             setToDate(newTo);
@@ -288,7 +302,7 @@ const Plan = () => {
                                                 dispatch(
                                                     setTrip({
                                                         ...trip,
-                                                        people: item.count,
+                                                        people: item.people,
                                                     })
                                                 );
                                             }}

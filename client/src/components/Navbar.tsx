@@ -7,8 +7,8 @@ import { setUser } from "../redux/slices/user/user";
 const Navbar = () => {
     const navigate = useNavigate();
     const user = useAppSelector((state) => state.user); // reads the current user from the store.
-    const dispatch = useAppDispatch(); //gives a function you can call to write to the store.
     const [loading, setLoading] = useState<boolean>(false);
+    const dispatch = useAppDispatch();
 
     const logoutHandler = async () => {
         try {
