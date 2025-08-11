@@ -82,9 +82,6 @@ const askGemini = async (req: Request, res: Response) => {
           "recommendedAccommodations": [
             { "name": "string", "location": "string", "rating": number, "type": "string", "pricePerNight": number, "description": "string" }
           ],
-          "topActivitiesAttractions": [
-            { "name": "string", "location": "string", "rating": number, "type": "string", "durationHours": number, "groupSize": "string", "price": number, "description": "string" }
-          ],
           "diningOptions": [
             { "name": "string", "location": "string", "rating": number, "cuisine": "string", "priceRange": number, "description": "string" }
           ]

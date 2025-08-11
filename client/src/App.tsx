@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Plan from "./pages/Plan";
+import DummyItinerary from "./pages/DummyItinerary";
 import Itinerary from "./pages/Itinerary";
 import { useAppDispatch } from "./redux/hooks";
 import { useEffect } from "react";
@@ -51,6 +52,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/plan" element={<Plan />} />
+                <Route path="/sample-itinerary" element={<DummyItinerary />} />
                 <Route path="/itinerary" element={<Itinerary />} />
             </Routes>
         </>

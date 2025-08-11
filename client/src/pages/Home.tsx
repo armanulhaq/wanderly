@@ -41,13 +41,15 @@ const Home = () => {
                                 <Sparkles className="w-5 h-5" />
                                 Plan My Trip
                             </button>
-                            <button className="px-6 py-3 bg-gray-100 text-gray-800 hover:text-purple-600 rounded-lg font-medium transition-colors cursor-pointer">
+                            <button
+                                onClick={() => navigate("/sample-itinerary")}
+                                className="px-6 py-3 bg-gray-100 text-gray-800 hover:text-purple-600 rounded-lg font-medium transition-colors cursor-pointer"
+                            >
                                 See Sample Trips
                             </button>
                         </div>
                     </div>
 
-                    {/* Right section */}
                     <div className="hidden md:flex items-center justify-center">
                         <div className="w-full h-80 flex items-center justify-center">
                             <img

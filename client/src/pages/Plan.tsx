@@ -124,10 +124,10 @@ const Plan = () => {
             !trip.people
         ) {
             toast("Please fill all the fields", {
-                icon: "❌",
                 style: {
                     borderRadius: "10px",
-                    background: "#3c096c",
+                    padding: "16px",
+                    background: "#826aed",
                     color: "#fff",
                 },
             });
