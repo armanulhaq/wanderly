@@ -10,7 +10,7 @@ const getAutoComplete = async (req: Request, res: Response) => {
         const response = await fetch(
             `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${encodeURIComponent(
                 input
-            )}&key=${process.env.GOOGLE_AUTOCOMPLETE_API_KEY}&types=(cities)` //encodeURIComponent() ensures special characters (spaces, punctuation) in the query don’t break the URL.
+            )}&key=${process.env.GOOGLE_AUTOCOMPLETE_API_KEY}` //encodeURIComponent() ensures special characters (spaces, punctuation) in the query don’t break the URL.
         );
 
         const data = await response.json();

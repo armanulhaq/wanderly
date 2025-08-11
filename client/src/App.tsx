@@ -4,8 +4,10 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Plan from "./pages/Plan";
+import Itinerary from "./pages/Itinerary";
 import { useAppDispatch } from "./redux/hooks";
 import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 import { setUser } from "./redux/slices/user/user";
 
 function App() {
@@ -32,14 +34,16 @@ function App() {
             }
         };
         checkUser();
-    }, [dispatch]);
+    }, []);
     return (
         <>
+            <Toaster position="bottom-right" reverseOrder={false} />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/plan" element={<Plan />} />
+                <Route path="/itinerary" element={<Itinerary />} />
             </Routes>
         </>
     );

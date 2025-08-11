@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { SelectBudgetOptions, SelectTravelList } from "../constants/options";
 import {
@@ -10,12 +10,15 @@ import {
 } from "@/components/ui/command";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setTrip } from "@/redux/slices/trip/trip";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Plan = () => {
     type PlacePrediction = {
         description: string;
         place_id: string;
     };
+    const navigate = useNavigate();
 
     const [query, setQuery] = useState(""); // stores input
     const [results, setResults] = useState<PlacePrediction[]>([]); // stores matched places from google
@@ -39,6 +42,19 @@ const Plan = () => {
         // Format back to YYYY-MM-DD
         return date.toISOString().split("T")[0];
     };
+
+    // When we come to Plan.tsx clear trip data as it was persisting from Itinerary.tsx
+    useEffect(() => {
+        dispatch(
+            setTrip({
+                destination: "",
+                from: "",
+                to: "",
+                budget: "",
+                people: "",
+            })
+        );
+    }, []);
 
     const fetchPlaces = async (input: string) => {
         if (!input.trim()) {
@@ -90,20 +106,25 @@ const Plan = () => {
             })
         );
     };
-    console.log(trip);
-
     const onGenerateTrip = async () => {
-        const res = await fetch("http://localhost:3000/api/askgemini", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(trip),
-        });
-        if (res.ok) {
-            const data = await res.json();
-            console.log("Success hueuhueueheuheu", data);
+        if (
+            !trip.destination ||
+            !trip.from ||
+            !trip.to ||
+            !trip.budget ||
+            !trip.people
+        ) {
+            toast("Please fill all the fields", {
+                icon: "❌",
+                style: {
+                    borderRadius: "10px",
+                    background: "#3c096c",
+                    color: "#fff",
+                },
+            });
+            return;
         }
+        navigate("/itinerary");
     };
 
     return (
@@ -183,7 +204,7 @@ const Plan = () => {
                                     <input
                                         type="date"
                                         value={fromDate}
-                                        min={today} // disallow past dates
+                                        min={addDays(today, 1)} // disallow past dates
                                         onChange={(e) => {
                                             const newFrom = e.target.value;
                                             setFromDate(newFrom);
@@ -212,7 +233,11 @@ const Plan = () => {
                                     <input
                                         type="date"
                                         value={toDate}
-                                        min={fromDate || today} // cannot be before fromDate
+                                        min={
+                                            fromDate
+                                                ? addDays(fromDate, 1)
+                                                : addDays(today, 1)
+                                        } // cannot be before fromDate
                                         max={
                                             fromDate
                                                 ? addDays(fromDate, 3)
@@ -337,7 +362,6 @@ const Plan = () => {
                                 e.preventDefault(); // Prevent form submission if inside a form
                                 onGenerateTrip();
                             }}
-                            // disabled={loading}
                         >
                             Generate Trip
                         </button>
