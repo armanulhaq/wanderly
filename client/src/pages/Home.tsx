@@ -8,39 +8,46 @@ const Home = () => {
     return (
         <>
             <Navbar />
-            <section className="bg-subtle-purple min-h-screen text-gray-100 flex items-center">
+            <section className="min-h-screen text-gray-900 flex items-center bg-white">
                 <main className="max-w-6xl mx-auto px-8 md:px-12 py-16 grid md:grid-cols-2 gap-12">
+                    {/* Left section */}
                     <div className="flex flex-col justify-center">
-                        <div className="inline-flex items-center gap-2 bg-purple-600/30 px-3 py-1 rounded-full text-purple-300 text-sm w-fit">
+                        {/* Tag */}
+                        <div className="inline-flex items-center gap-2 bg-purple-100 px-3 py-1 rounded-full text-purple-700 text-sm w-fit">
                             <Sparkles className="w-4 h-4" />
                             <span>AI Powered Trip Planner</span>
                         </div>
 
+                        {/* Heading */}
                         <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
                             Plan your next trip with{" "}
-                            <span className="bg-gradient-to-r from-purple-400 via-purple-600 to-purple-700 bg-clip-text text-transparent">
+                            <span className="bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 bg-clip-text text-transparent">
                                 Wanderly
                             </span>
                         </h1>
-                        <p className="mt-4 text-lg text-gray-400 max-w-lg">
+
+                        {/* Subheading */}
+                        <p className="mt-4 text-lg text-gray-700 max-w-lg">
                             Discover hidden gems, craft the perfect itinerary,
                             and make every moment of your journey unforgettable.
                         </p>
 
+                        {/* Buttons */}
                         <div className="mt-8 flex flex-col sm:flex-row gap-4">
                             <button
                                 onClick={() => navigate("/plan")}
-                                className="flex items-center justify-center gap-2 px-6 py-3 bg-purple-500/50 hover:bg-purple-600/50 text-white rounded-lg font-medium transition-colors cursor-pointer"
+                                className="flex items-center justify-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors cursor-pointer"
                             >
                                 <Sparkles className="w-5 h-5" />
                                 Plan My Trip
                             </button>
-                            <button className="px-6 py-3 bg-gray-800 text-white hover:text-purple-500/70 rounded-lg font-medium transition-colors cursor-pointer">
+                            <button className="px-6 py-3 bg-gray-100 text-gray-800 hover:text-purple-600 rounded-lg font-medium transition-colors cursor-pointer">
                                 See Sample Trips
                             </button>
                         </div>
                     </div>
 
+                    {/* Right section */}
                     <div className="hidden md:flex items-center justify-center">
                         <div className="w-full h-80 flex items-center justify-center">
                             <img
