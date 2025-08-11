@@ -14,6 +14,15 @@ const askGemini = async (req: Request, res: Response) => {
         async function main() {
             const prompt = `
         You are a travel assistant AI. Generate a detailed 7-day trip itinerary in JSON format based on the user inputs.
+        Rules:
+        - Output VALID JSON only — no markdown code blocks, no commentary, no escaped newlines, and no backslashes before quotes unless strictly needed for JSON.
+        - No \` characters in output.
+        - No properties missing from the schema.
+        - All dates use YYYY-MM-DD.
+        - All times use HH:mm 24h.
+        - Numbers should not contain commas or currency symbols.
+        - Ratings are numbers (max 1 decimal).
+        - Output exactly one JSON object that matches this TypeScript type:
 
         User inputs:
         - Destination: ${destination}
@@ -93,7 +102,14 @@ const askGemini = async (req: Request, res: Response) => {
                     },
                 },
             });
-            return response.text;
+            let cleaned = response.text?.replace(/^``````$/, ""); //removes ```
+            try {
+                const parsed = JSON.parse(cleaned!); //to make sure it can be parsed into a valid JSON
+                cleaned = JSON.stringify(parsed); // making it string again
+            } catch (err) {
+                console.error("Invalid JSON from Gemini:", cleaned);
+            }
+            return cleaned;
         }
         return res.status(200).json({
             message: "Success we got everything...",

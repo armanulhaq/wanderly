@@ -4,7 +4,8 @@ import ItineraryLoader from "../components/ItineraryLoader";
 
 const Itinerary = () => {
     const trip = useAppSelector((state) => state.trip);
-    const user = useAppSelector((state) => state.user);
+    //const user = useAppSelector((state) => state.user);
+    const [itinerary, setItinerary] = useState(null);
     const [loading, setLoading] = useState(false);
 
     const onGenerateTrip = async () => {
@@ -20,6 +21,7 @@ const Itinerary = () => {
             if (res.ok) {
                 const data = await res.json();
                 console.log("Success in generating trip", data);
+                setItinerary(data.response);
             }
         } catch (error) {
             console.log(error);
@@ -32,12 +34,14 @@ const Itinerary = () => {
         onGenerateTrip();
     }, []);
 
+    console.log("Itinerary", itinerary);
+
     if (loading) {
         return <ItineraryLoader />;
     }
     return (
         <div className="min-h-screen bg-subtle-purple text-gray-100">
-            Itinerary
+            {itinerary}
         </div>
     );
 };
