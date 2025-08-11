@@ -13,126 +13,76 @@ const askGemini = async (req: Request, res: Response) => {
         const ai = new GoogleGenAI({});
         async function main() {
             const prompt = `
-          You are a travel assistant AI. Generate a detailed 7-day trip itinerary in JSON format based on the user inputs.
+        You are a travel assistant AI. Generate a detailed 7-day trip itinerary in JSON format based on the user inputs.
 
-          User inputs:
-          - Destination: ${destination}
-          - Travel Dates: From ${from} to ${to}
-          - Number of Travelers: ${people}
-          - Budget Type: ${budget}  // Possible values: "saver", "comfort", or "luxury"
+        User inputs:
+        - Destination: ${destination}
+        - Travel Dates: From ${from} to ${to}
+        - Number of Travelers: ${people}
+        - Budget Type: ${budget}  // Possible values: "saver", "comfort", or "luxury"
 
-          Requirements:
-          - Estimate a realistic totalBudget in Indian Rupees (₹) based on the budget type:
-            - Saver: prioritize saving money, keep totalBudget low with budget options.
-            - Comfort: balance cost and comfort; moderate totalBudget.
-            - Luxury: freehand spending, premium options allowed.
-          - Plan the entire itinerary and costs according to this estimated totalBudget.
-          - Budget breakdown must be realistic, in ₹, and cover accommodation, flights, dining, activities/entertainment, and transportation.
-          - Maintain the exact JSON structure below without any deviation.
-          - Respond ONLY with the valid JSON, no extra text.
+        Requirements:
+        - Estimate a realistic totalBudget in INR based on the budget type:
+          Saver = low cost, Comfort = moderate cost, Luxury = high cost.
+        - All amounts must be numbers in INR without the ₹ symbol or commas.
+        - All ratings must be numbers (1 decimal allowed).
+        - All dates must follow YYYY-MM-DD format.
+        - All times must follow HH:mm (24-hour) format.
+        - No text outside the JSON.
 
-          JSON structure:
+        JSON structure (strict types):
 
-          {
-            "tripSummary": {
-              "title": "Your Perfect 7-Day ${destination} Adventure",
-              "subtitle": "An unforgettable experience tailored for your budget",
-              "location": "${destination}",
-              "durationDays": 3,
-              "travelers": "${people}",
-              "tripRating": 4.7, // AI to estimate and fill realistic trip rating
-              "totalBudget": 0 // AI to estimate and fill realistic total budget in ₹
-            },
-            "dailyItinerary": [
-              {
-                "day": 1,
-                "date": "YYYY-MM-DD",
-                "activities": [
-                  {
-                    "time": "HH:MM AM/PM",
-                    "location": "Location name",
-                    "title": "Activity title",
-                    "description": "Detailed activity description"
-                  }
-                  // More activities...
-                ]
-              }
-              // More days...
-            ],
-            "budgetBreakdown": {
-              "totalBudget": 0, // same as tripSummary.totalBudget
-              "remaining": 0,
-              "categories": {
-                "accommodation": {
-                  "amount": 0,
-                  "percentage": 0
-                },
-                "flights": {
-                  "amount": 0,
-                  "percentage": 0
-                },
-                "dining": {
-                  "amount": 0,
-                  "percentage": 0
-                },
-                "activities_entertainment": {
-                  "amount": 0,
-                  "percentage": 0
-                },
-                "transportation": {
-                  "amount": 0,
-                  "percentage": 0
+        {
+          "tripSummary": {
+            "title": "string",
+            "subtitle": "string",
+            "location": "string",
+            "durationDays": number,
+            "travelers": number,
+            "tripRating": number,
+            "totalBudget": number
+          },
+          "dailyItinerary": [
+            {
+              "day": number,
+              "date": "YYYY-MM-DD",
+              "activities": [
+                {
+                  "time": "HH:mm",
+                  "location": "string",
+                  "title": "string",
+                  "description": "string"
                 }
-              }
-            },
-            "travelTips": [
-              {
-                "title": "Tip title",
-                "description": "Detailed tip description"
-              }
-              // More tips...
-            ],
-            "recommendedAccommodations": [
-              {
-                "name": "Hotel name",
-                "location": "Hotel address or area",
-                "rating": 0,
-                "type": "Hotel type, e.g. Luxury, Budget, Boutique",
-                "pricePerNight": 0,
-                "description": "Hotel description"
-              }
-              // More hotels...
-            ],
-            "topActivitiesAttractions": [
-              {
-                "name": "Attraction name",
-                "location": "Attraction location",
-                "rating": 0,
-                "type": "Type of attraction",
-                "durationHours": "Duration e.g. 2-3",
-                "groupSize": "Suggested group size",
-                "price": "Cost or Free",
-                "description": "Brief description"
-              }
-              // More attractions...
-            ],
-            "diningOptions": [
-              {
-                "name": "Restaurant name",
-                "location": "Restaurant location",
-                "rating": 0,
-                "cuisine": "Cuisine type",
-                "priceRange": "₹₹ or ₹₹₹₹ etc.",
-                "description": "Short description"
-              }
-              // More dining options...
-            ]
-          }
+              ]
+            }
+          ],
+          "budgetBreakdown": {
+            "totalBudget": number,
+            "remaining": number,
+            "categories": {
+              "accommodation": { "amount": number, "percentage": number },
+              "flights": { "amount": number, "percentage": number },
+              "dining": { "amount": number, "percentage": number },
+              "activities_entertainment": { "amount": number, "percentage": number },
+              "transportation": { "amount": number, "percentage": number }
+            }
+          },
+          "travelTips": [
+            { "title": "string", "description": "string" }
+          ],
+          "recommendedAccommodations": [
+            { "name": "string", "location": "string", "rating": number, "type": "string", "pricePerNight": number, "description": "string" }
+          ],
+          "topActivitiesAttractions": [
+            { "name": "string", "location": "string", "rating": number, "type": "string", "durationHours": number, "groupSize": "string", "price": number, "description": "string" }
+          ],
+          "diningOptions": [
+            { "name": "string", "location": "string", "rating": number, "cuisine": "string", "priceRange": number, "description": "string" }
+          ]
+        }
 
-          Ensure every date is correct for the trip duration, and cost estimates are appropriate for the Indian Rupee economy.
-
-          Respond ONLY with the valid JSON, nothing else.
-          `;
+        Return only valid JSON.
+        `;
 
             const response = await ai.models.generateContent({
                 model: "gemini-2.5-flash",
@@ -145,12 +95,10 @@ const askGemini = async (req: Request, res: Response) => {
             });
             return response.text;
         }
-        return res
-            .status(200)
-            .json({
-                message: "Success we got everything...",
-                response: await main(),
-            });
+        return res.status(200).json({
+            message: "Success we got everything...",
+            response: await main(),
+        });
     } catch (error) {
         console.error("Error in askGemini controller:", error);
         return res.status(500).json({ error: "Internal server error" });

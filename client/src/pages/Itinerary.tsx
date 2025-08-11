@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../redux/hooks";
-import toast from "react-hot-toast";
+import ItineraryLoader from "../components/ItineraryLoader";
+
 const Itinerary = () => {
     const trip = useAppSelector((state) => state.trip);
     const user = useAppSelector((state) => state.user);
@@ -32,7 +33,7 @@ const Itinerary = () => {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <ItineraryLoader />;
     }
     return (
         <div className="min-h-screen bg-subtle-purple text-gray-100">
