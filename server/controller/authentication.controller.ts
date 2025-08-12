@@ -1,7 +1,7 @@
 import type { Request, Response } from "express"; // tells compiler these are just types and don't find them for real at runtime
 import User from "../models/User.model.ts";
 import bcrypt from "bcrypt";
-import { getUser, setUser } from "../middlewares/auth.js";
+import { getUser, setUser } from "../middlewares/auth.ts";
 
 const registerController = async (req: Request, res: Response) => {
     const { name, email, password } = req.body;
@@ -29,6 +29,7 @@ const loginController = async (req: Request, res: Response) => {
     if (!email || !password) {
         return res.status(400).json({ message: "All fields are required" });
     }
+    console.log(email, password);
     try {
         const user = await User.findOne({ email });
         if (!user) {
