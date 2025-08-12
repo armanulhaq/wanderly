@@ -5,7 +5,17 @@ import { useAppSelector } from "../redux/hooks";
 import { useDispatch } from "react-redux";
 import { setItinerary } from "../redux/slices/itinerary/itinerary";
 import details from "../assets/details.jpg";
-import { MapPin, Clock, Map, Calendar, Star, Sun, User } from "lucide-react";
+import {
+    MapPin,
+    Clock,
+    Map,
+    Calendar,
+    Star,
+    Sun,
+    Utensils,
+    Bed,
+    Lightbulb,
+} from "lucide-react";
 
 const Itinerary = () => {
     const trip = useAppSelector((state) => state.trip);
@@ -43,7 +53,7 @@ const Itinerary = () => {
     console.log(itinerary);
 
     return (
-        <>
+        <div className="mx-5 ">
             <Navbar />
             <div className="min-h-screen max-w-6xl mx-auto">
                 {/* HERO SECTION */}
@@ -53,7 +63,7 @@ const Itinerary = () => {
                         alt="Itinerary Details"
                         className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
                     <div className="absolute bottom-8 left-8 right-8 text-white">
                         <div className="max-w-4xl mx-auto">
@@ -74,55 +84,58 @@ const Itinerary = () => {
                 </div>
 
                 {/* TRIP SUMMARY CARDS */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 my-8">
-                    <div className="bg-purple-50 p-2 rounded-lg border border-purple-800">
-                        <div className="p-2 text-center">
-                            <Calendar className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-                            <p className="text-sm">Duration</p>
-                            <p className="font-semibold">
-                                {itinerary?.tripSummary?.duration} days
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="bg-purple-50 p-2 rounded-lg border border-purple-800">
-                        <div className="p-2 text-center">
-                            <Star className="w-8 h-8 text-yellow-500 mx-auto mb-2" />
-                            <p className="text-sm">Trip Rating</p>
-                            <p className="font-semibold">
-                                {itinerary?.tripSummary?.aiTripRating}/5
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="bg-purple-50 p-2 rounded-lg border border-purple-800">
-                        <div className="p-2 text-center">
-                            <div className="w-8 h-8 text-2xl mx-auto mb-2">
-                                💰
+                <div className="flex md:flex-col items-center">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 my-8 w-full">
+                        <div className="bg-white p-2 rounded-lg border border-gray-200 transition-all hover:-translate-y-1 animate-fade-in">
+                            <div className="p-2 text-center">
+                                <Calendar className="w-8 h-8  text-purple-600 mx-auto mb-2" />
+                                <p className="text-sm">Duration</p>
+                                <p className="font-semibold">
+                                    {itinerary?.tripSummary?.duration} days
+                                </p>
                             </div>
-                            <p className="text-sm">Estimated Cost</p>
-                            <p className="font-semibold">
-                                ₹ {itinerary?.tripSummary?.estimatedCost}
-                            </p>
+                        </div>
+
+                        <div className="bg-white p-2 rounded-lg border border-gray-200 transition-all hover:-translate-y-1 animate-fade-in">
+                            <div className="p-2 text-center">
+                                <Star className="w-8 h-8 text-yellow-500 mx-auto mb-2" />
+                                <p className="text-sm">Trip Rating</p>
+                                <p className="font-semibold">
+                                    {itinerary?.tripSummary?.aiTripRating}/5
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="bg-white p-2 rounded-lg border border-gray-200 transition-all hover:-translate-y-1 animate-fade-in">
+                            <div className="p-2 text-center">
+                                <div className="w-8 h-8 text-2xl mx-auto mb-2">
+                                    💰
+                                </div>
+                                <p className="text-sm">Estimated Cost</p>
+                                <p className="font-semibold">
+                                    ₹ {itinerary?.tripSummary?.estimatedCost}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {/* WEATHER CARD */}
-                <div className="bg-purple-50 p-2 rounded-lg border border-purple-800">
-                    <div className="p-2 text-center">
-                        <Sun className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
-                        <p className="text-sm font-bold">Weather Forecast</p>
-                        <p className="text-xs">
-                            {itinerary?.tripSummary?.overallWeather}
-                        </p>
+                    <div className="bg-white p-2 w-[30%] rounded-lg border border-gray-200 transition-all hover:-translate-y-1 animate-fade-in">
+                        <div className="p-2 text-center">
+                            <Sun className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
+                            <p className="text-sm font-bold">
+                                Weather Forecast
+                            </p>
+                            <p className="text-xs">
+                                {itinerary?.tripSummary?.overallWeather}
+                            </p>
+                        </div>
                     </div>
                 </div>
 
                 {/* MAIN CONTENT */}
                 <div className="flex max-w-6xl mx-auto gap-6 flex-col md:flex-row pb-12 my-10">
                     {/* DAILY ITINERARY */}
-                    <div className="px-6 py-4 flex-[2]">
+                    <div className="px-6 py-4 flex-[3]">
                         {itinerary?.dailyItinerary?.map((day, dayIndex) => (
                             <div
                                 key={dayIndex}
@@ -142,15 +155,15 @@ const Itinerary = () => {
                                 {day.activities.map((activity, idx) => (
                                     <div
                                         key={idx}
-                                        className="bg-purple-50 p-5 rounded-lg border mb-5 border-purple-700/60 hover:shadow-md transition-shadow"
+                                        className="bg-white p-5 rounded-lg border mb-5 hover:shadow-md transition-shadow"
                                     >
-                                        <div className="flex items-center gap-1 mb-2">
+                                        <div className="flex items-center gap-1 mb-2 bg-purple-50 w-fit p-2 rounded-full">
                                             <Clock className="w-4 h-4 text-purple-500" />
-                                            <span className="text-sm text-gray-700">
+                                            <span className="text-xs text-gray-700">
                                                 {activity.time}
                                             </span>
                                         </div>
-                                        <h3 className="font-bold text-lg text-gray-900">
+                                        <h3 className="font-bold text-lg text-gray-900 hover:text-purple-800 transition-all">
                                             {activity.title}
                                         </h3>
                                         <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
@@ -167,10 +180,12 @@ const Itinerary = () => {
                     </div>
 
                     {/* SIDEBAR */}
-                    <div className="px-6 py-4 bg-white rounded-lg flex-1 border border-gray-100 h-fit space-y-8">
-                        {/* Recommended Accommodations */}
-                        <div>
-                            <h3 className="font-semibold text-lg text-gray-900 mb-3">
+                    <div className="rounded-lg flex-2 h-fit space-y-8 ">
+                        <div className="p-8 rounded-lg bg-white border border-gray-100">
+                            <h3 className="font-semibold flex items-center gap-2 text-lg text-gray-900 mb-3">
+                                <span>
+                                    <Bed className="w-6 h-6 text-purple-600" />
+                                </span>
                                 Recommended Accommodations
                             </h3>
                             <ul className="space-y-3">
@@ -178,35 +193,41 @@ const Itinerary = () => {
                                     (hotel, idx) => (
                                         <li
                                             key={idx}
-                                            className="bg-gray-50 p-3 rounded-lg border border-gray-200"
+                                            className="bg-gray-50 space-y-2 p-5 rounded-lg border border-gray-200"
                                         >
                                             <img
                                                 src="https://plus.unsplash.com/premium_photo-1687960116497-0dc41e1808a2?q=80&w=2342&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                                 alt={hotel.name}
                                                 className="w-full h-48 object-cover mb-2 rounded"
                                             />
-                                            <div className="flex items-center gap-2 w-full">
-                                                <div className="flex items-center justify-between gap-2">
-                                                    <p className="font-medium text-gray-900">
-                                                        {hotel.name}
-                                                    </p>
-                                                    <p className="text-xs rounded-xl px-2 py-1 text-gray-600">
-                                                        ₹
-                                                        {
-                                                            hotel.priceRangePerNight
-                                                        }
+                                            <div>
+                                                <div className="flex items-center gap-2">
+                                                    <div className="flex items-center justify-between gap-2">
+                                                        <p className="font-medium text-gray-900">
+                                                            {hotel.name}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center gap-1">
+                                                    <div>
+                                                        <MapPin className="w-4 h-4 text-purple-600" />
+                                                    </div>
+                                                    <p className="text-xs text-purple-600">
+                                                        {hotel.location}
                                                     </p>
                                                 </div>
                                             </div>
 
-                                            <p className="text-xs text-gray-600">
-                                                {hotel.location}
-                                            </p>
-
-                                            <p className="text-xs text-yellow-500">
-                                                ⭐ {hotel.rating}
-                                            </p>
-
+                                            <div className="flex items-center gap-1 justify-between">
+                                                <p className="text-xs bg-yellow-200 rounded-full px-2 py-1">
+                                                    ⭐ {hotel.rating}
+                                                </p>
+                                                <p className="text-xs bg-green-100 text-green-600 rounded-full px-2 py-1">
+                                                    Approx. ₹
+                                                    {hotel.priceRangePerNight}
+                                                    /night
+                                                </p>
+                                            </div>
                                             <p className="text-xs text-gray-500">
                                                 {hotel.description}
                                             </p>
@@ -217,8 +238,11 @@ const Itinerary = () => {
                         </div>
 
                         {/* Dining Options */}
-                        <div>
-                            <h3 className="font-semibold text-lg text-gray-900 mb-3">
+                        <div className="p-8 rounded-lg border border-gray-100">
+                            <h3 className="font-semibold flex items-center gap-2 text-lg text-gray-900 mb-3">
+                                <span>
+                                    <Utensils className="w-6 h-6 text-purple-600" />
+                                </span>
                                 Dining Options
                             </h3>
                             <ul className="space-y-3">
@@ -226,35 +250,39 @@ const Itinerary = () => {
                                     (dining, idx) => (
                                         <li
                                             key={idx}
-                                            className="bg-gray-50 space-y-1 p-3 rounded-lg border border-gray-200"
+                                            className="bg-gray-50 space-y-2 p-5 rounded-lg border border-gray-200"
                                         >
                                             <img
                                                 src="https://images.unsplash.com/photo-1574966739987-65e38db0f7ce?q=80&w=2342&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                                 alt={dining.name}
                                                 className="w-full h-48 object-cover mb-2 rounded"
                                             />
-                                            <div className="flex items-center justify-between">
-                                                <p className="font-medium text-gray-900">
-                                                    {dining.name}
-                                                </p>
-                                                <div className="flex items-center gap-1">
-                                                    <User className="w-4 h-4 text-gray-400" />
-                                                    <p className="text-xs text-gray-600">
+                                            <div>
+                                                <div className="flex items-center justify-between">
+                                                    <p className="font-medium text-gray-900">
+                                                        {dining.name}
+                                                    </p>
+                                                    <p className="text-xs bg-green-100 text-green-600 rounded-full px-2 py-1">
                                                         ₹
                                                         {
                                                             dining.priceRangePerPerson
-                                                        }
+                                                        }{" "}
+                                                        /person
+                                                    </p>
+                                                </div>
+                                                <div className="flex items-center gap-1">
+                                                    <MapPin className="w-4 h-4 text-purple-600" />
+                                                    <p className="text-xs text-purple-600">
+                                                        {dining.location}
                                                     </p>
                                                 </div>
                                             </div>
-                                            <p className="text-xs text-gray-600">
-                                                {dining.location}
-                                            </p>
-                                            <div className="flex items-center justify-between gap-1">
-                                                <p className="text-xs text-yellow-500">
+
+                                            <div className="flex items-center gap-1 justify-between">
+                                                <p className="text-xs bg-yellow-200 rounded-full px-2 py-1">
                                                     ⭐ {dining.rating}
                                                 </p>
-                                                <p className="text-xs underline text-gray-500">
+                                                <p className="text-xs bg-purple-100 text-purple-700 rounded-full px-2 py-1">
                                                     Speciality: {dining.cuisine}
                                                 </p>
                                             </div>
@@ -269,8 +297,11 @@ const Itinerary = () => {
                         </div>
 
                         {/* Travel Tips */}
-                        <div>
-                            <h3 className="font-semibold text-lg text-gray-900 mb-3">
+                        <div className="p-8 rounded-lg bg-amber-50 border border-gray-100">
+                            <h3 className="flex items-center gap-2 font-bold text-xl text-gray-900 mb-3">
+                                <span>
+                                    <Lightbulb className="w-6 h-6 text-amber-600" />
+                                </span>
                                 Travel Tips
                             </h3>
                             <ul className="list-none space-y-3 text-sm text-gray-700">
@@ -289,7 +320,7 @@ const Itinerary = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
