@@ -1,12 +1,12 @@
 const dummyDetails = {
     tripSummary: {
-        title: "Solo Saver Expedition to Tokyo",
-        subtitle: "A compact journey through Japan's vibrant capital.",
-        location: "Tokyo, Japan",
-        durationDays: 3,
-        travelers: 1,
-        tripRating: 4.5,
-        totalBudget: 50000,
+        title: "A Whirlwind Dublin Adventure",
+        subtitle: "Discover the heart of Ireland in two days.",
+        location: "Dublin, Ireland",
+        aiTripRating: 4.2,
+        estimatedCost: 40000,
+        overallWeather: "Mild and often rainy, typical for August in Dublin.",
+        duration: 2,
     },
     dailyItinerary: [
         {
@@ -15,31 +15,38 @@ const dummyDetails = {
             activities: [
                 {
                     time: "10:00",
-                    location: "Narita International Airport (NRT)",
-                    title: "Arrival in Tokyo",
+                    location: "Dublin City Centre",
+                    title: "Arrival and Hotel Check-in",
                     description:
-                        "Arrive at Narita International Airport, clear customs, and take the Narita Express (N'EX) or Keisei Skyliner to your accommodation in Ueno/Asakusa area for easy access.",
+                        "Arrive at Dublin Airport (DUB), take public transport (Aircoach or Dublin Express) to your accommodation in the city centre. Check-in and drop off luggage.",
                 },
                 {
-                    time: "13:00",
-                    location: "Asakusa Senso-ji Temple",
-                    title: "Explore Senso-ji Temple & Nakamise-dori",
+                    time: "12:00",
+                    location: "Temple Bar Area",
+                    title: "Explore Temple Bar",
                     description:
-                        "Visit Tokyo's oldest temple, Senso-ji, and stroll through Nakamise-dori market for traditional snacks and souvenirs. Enjoy the vibrant atmosphere.",
+                        "Wander through the lively Temple Bar district, soak in the atmosphere, and browse the unique shops. Grab a quick and affordable lunch at a local cafe.",
                 },
                 {
-                    time: "18:00",
-                    location: "Ueno Park",
-                    title: "Relax in Ueno Park",
+                    time: "14:00",
+                    location: "Trinity College Dublin",
+                    title: "Visit Trinity College and Book of Kells",
                     description:
-                        "Wander through Ueno Park, home to several museums and a zoo. Enjoy the evening ambiance and perhaps visit a street food stall.",
+                        "Take a guided tour of Trinity College and marvel at the ancient Book of Kells and the stunning Long Room library.",
                 },
                 {
-                    time: "20:00",
-                    location: "Local Izakaya in Ueno",
-                    title: "Dinner at a local Izakaya",
+                    time: "17:00",
+                    location: "Grafton Street",
+                    title: "Shopping on Grafton Street",
                     description:
-                        "Experience authentic Japanese casual dining at a local Izakaya, trying various small dishes and drinks.",
+                        "Enjoy window shopping or grab a souvenir on Dublin's premier shopping street, known for its street performers.",
+                },
+                {
+                    time: "19:00",
+                    location: "Dublin City Centre",
+                    title: "Dinner at a Traditional Pub",
+                    description:
+                        "Experience a hearty dinner at a traditional Irish pub, enjoying classic dishes like fish and chips or stew. Look for places offering early bird menus for savings.",
                 },
             ],
         },
@@ -49,241 +56,136 @@ const dummyDetails = {
             activities: [
                 {
                     time: "09:00",
-                    location: "Tsukiji Outer Market",
-                    title: "Breakfast and explore Tsukiji Outer Market",
+                    location: "Guinness Storehouse",
+                    title: "Guinness Storehouse Experience",
                     description:
-                        "Start your day with fresh seafood breakfast and explore the bustling Tsukiji Outer Market, tasting various street foods and local delicacies.",
+                        "Embark on an interactive journey through the history of Guinness, ending with a pint at the Gravity Bar with panoramic city views. Book tickets online in advance to save money.",
                 },
                 {
-                    time: "11:00",
-                    location: "Shibuya Crossing & Hachiko Statue",
-                    title: "Experience Shibuya",
+                    time: "12:00",
+                    location: "St. Stephen's Green",
+                    title: "Lunch and Stroll in St. Stephen's Green",
                     description:
-                        "Head to Shibuya to witness the iconic Shibuya Scramble Crossing and visit the Hachiko statue. Explore the trendy shops and vibrant atmosphere.",
-                },
-                {
-                    time: "14:00",
-                    location: "Meiji Jingu Shrine",
-                    title: "Serenity at Meiji Jingu Shrine",
-                    description:
-                        "Find peace at Meiji Jingu Shrine, a serene oasis dedicated to Emperor Meiji and Empress Shoken, located next to Yoyogi Park.",
-                },
-                {
-                    time: "17:00",
-                    location: "Harajuku (Takeshita Street)",
-                    title: "Discover Harajuku's culture",
-                    description:
-                        "Explore Takeshita Street in Harajuku, known for its unique street fashion, quirky shops, and crepes. Enjoy people-watching.",
-                },
-                {
-                    time: "19:30",
-                    location: "Shinjuku Golden Gai",
-                    title: "Evening in Shinjuku Golden Gai",
-                    description:
-                        "Experience the unique nightlife of Shinjuku Golden Gai, a compact area filled with tiny, atmospheric bars. Choose a bar for a drink and soak in the atmosphere.",
-                },
-            ],
-        },
-        {
-            day: 3,
-            date: "2025-08-15",
-            activities: [
-                {
-                    time: "09:00",
-                    location: "Imperial Palace East Garden",
-                    title: "Visit Imperial Palace East Garden",
-                    description:
-                        "Explore the beautiful and historical Imperial Palace East Garden, part of the former Edo Castle grounds. Enjoy a peaceful morning walk.",
-                },
-                {
-                    time: "11:00",
-                    location: "Akihabara Electric Town",
-                    title: "Immerse in Akihabara's pop culture",
-                    description:
-                        "Dive into the world of electronics, anime, manga, and gaming in Akihabara. Explore multi-story shops and arcades.",
+                        "Grab a packed lunch or a takeaway sandwich and enjoy it in the beautiful Victorian park of St. Stephen's Green, perfect for people-watching and relaxation.",
                 },
                 {
                     time: "14:00",
-                    location: "Ueno or Narita Airport Area",
-                    title: "Last-minute souvenir shopping",
+                    location: "National Museum of Ireland - Natural History",
+                    title: "Discover the National Museum of Ireland",
                     description:
-                        "Grab some last-minute souvenirs or gifts from a local shop near your accommodation or at the airport.",
+                        "Visit the 'Dead Zoo' for a fascinating journey through Ireland's natural heritage. Admission is free, making it a great budget option.",
                 },
                 {
                     time: "16:00",
-                    location: "Narita International Airport (NRT)",
-                    title: "Departure from Tokyo",
+                    location: "O'Connell Street / Spire of Dublin",
+                    title: "Farewell Dublin Walk",
                     description:
-                        "Head to Narita International Airport for your departure, concluding your short but memorable trip to Tokyo.",
+                        "Take a final walk around O'Connell Street, see the General Post Office, and the iconic Spire of Dublin. Pick up any last-minute souvenirs.",
+                },
+                {
+                    time: "18:00",
+                    location: "Dublin Airport (DUB)",
+                    title: "Departure",
+                    description:
+                        "Head to Dublin Airport for your departure, allowing ample time for check-in and security.",
                 },
             ],
         },
     ],
-    budgetBreakdown: {
-        totalBudget: 50000,
-        remaining: 2000,
-        categories: {
-            accommodation: {
-                amount: 10000,
-                percentage: 20,
-            },
-            flights: {
-                amount: 25000,
-                percentage: 50,
-            },
-            dining: {
-                amount: 7500,
-                percentage: 15,
-            },
-            activities_entertainment: {
-                amount: 3000,
-                percentage: 6,
-            },
-            transportation: {
-                amount: 2500,
-                percentage: 5,
-            },
-        },
-    },
     travelTips: [
         {
-            title: "Japan Rail Pass Not Recommended for Short Tokyo Trip",
+            title: "Public Transport is Your Friend",
             description:
-                "For a 3-day trip focused only on Tokyo, a Japan Rail Pass is usually not cost-effective. Utilize a Suica or Pasmo IC card for convenient public transportation.",
+                "Dublin city centre is very walkable, but for longer distances, utilise the bus system or the Luas (tram). Consider a Leap Card for convenience and savings.",
         },
         {
-            title: "Cash is King (Sometimes)",
+            title: "Book Attractions in Advance",
             description:
-                "While major stores accept cards, many smaller restaurants, shops, and guesthouses, especially outside major tourist areas, prefer or only accept cash. Carry enough Yen.",
+                "Many popular attractions like the Guinness Storehouse offer discounts for online bookings, and it helps to avoid long queues.",
         },
         {
-            title: "Learn Basic Japanese Phrases",
+            title: "Eat Like a Local on a Budget",
             description:
-                "Learning a few basic phrases like 'Arigato' (Thank you), 'Sumimasen' (Excuse me/Sorry), and 'Konnichiwa' (Hello) will greatly enhance your experience and show respect.",
+                "Look for 'early bird' menus at restaurants, explore local markets for fresh produce, or grab a cheap and cheerful 'chipper' for a true Irish experience.",
         },
         {
-            title: "Google Maps for Navigation",
+            title: "Embrace the Weather",
             description:
-                "Google Maps is incredibly accurate for public transport in Japan, including train and subway times and platforms. It's essential for getting around.",
+                "Dublin weather can be unpredictable. Pack layers, including a waterproof jacket and comfortable walking shoes, regardless of the season.",
         },
         {
-            title: "Respect Local Customs",
+            title: "Free Attractions",
             description:
-                "Be mindful of local customs: bow slightly when greeting, avoid talking loudly on public transport, and remove shoes before entering homes or some traditional establishments.",
+                "Many of Dublin's museums and galleries offer free admission, including the National Museum of Ireland and the National Gallery of Ireland, excellent for budget travelers.",
         },
     ],
     recommendedAccommodations: [
         {
-            name: "Nohga Hotel Ueno Tokyo",
-            location: "Ueno, Tokyo",
-            rating: 4.3,
-            type: "Boutique Hotel",
-            pricePerNight: 4000,
-            description:
-                "A stylish hotel in Ueno, offering comfortable rooms and excellent connectivity, perfect for exploring cultural sites. Good value for a saver budget.",
-        },
-        {
-            name: "APA Hotel Asakusa Tawaramachi Ekimae",
-            location: "Asakusa, Tokyo",
+            name: "Generator Dublin",
+            location: "Smithfield, Dublin 7",
             rating: 3.9,
-            type: "Business Hotel",
-            pricePerNight: 3000,
+            type: "Hostel/Budget Hotel",
+            priceRangePerNight: 4000,
             description:
-                "A budget-friendly option near Tawaramachi Station, offering compact but efficient rooms. Close to Senso-ji Temple and easy access to subway lines.",
+                "A vibrant hostel offering both private rooms and dorms, perfect for solo travelers looking for a social atmosphere and good value. Located near Jameson Distillery.",
         },
         {
-            name: "Khaosan Tokyo Origami",
-            location: "Asakusa, Tokyo",
+            name: "Camden Court Hotel",
+            location: "Camden Street, Dublin 2",
             rating: 4.1,
-            type: "Hostel/Guesthouse",
-            pricePerNight: 2000,
+            type: "Mid-range Hotel",
+            priceRangePerNight: 7500,
             description:
-                "A popular hostel offering both dormitory and private rooms. Known for its friendly atmosphere and proximity to major Asakusa attractions, ideal for solo saver travelers.",
-        },
-    ],
-    topActivitiesAttractions: [
-        {
-            name: "Senso-ji Temple",
-            location: "Asakusa, Tokyo",
-            rating: 4.7,
-            type: "Historical/Religious Site",
-            durationHours: 2,
-            groupSize: "Any",
-            price: 0,
-            description:
-                "Tokyo's oldest and most significant temple, featuring impressive gates, a five-story pagoda, and the bustling Nakamise-dori market leading up to it.",
+                "Offers comfortable rooms and good facilities, including a swimming pool, at a reasonable price. A bit further from the main tourist hubs but well-connected by Luas.",
         },
         {
-            name: "Shibuya Scramble Crossing",
-            location: "Shibuya, Tokyo",
-            rating: 4.6,
-            type: "Landmark/Experience",
-            durationHours: 1,
-            groupSize: "Any",
-            price: 0,
+            name: "Travelodge Dublin City Centre",
+            location: "Townsend Street, Dublin 2",
+            rating: 3.8,
+            type: "Budget Hotel",
+            priceRangePerNight: 5000,
             description:
-                "The world's busiest pedestrian crossing, an iconic symbol of modern Tokyo. Experience the organized chaos and explore the surrounding shops.",
-        },
-        {
-            name: "Meiji Jingu Shrine",
-            location: "Harajuku/Shibuya, Tokyo",
-            rating: 4.8,
-            type: "Spiritual/Nature",
-            durationHours: 1.5,
-            groupSize: "Any",
-            price: 0,
-            description:
-                "A peaceful Shinto shrine dedicated to Emperor Meiji and Empress Shoken, surrounded by a vast forest, offering a tranquil escape from city life.",
-        },
-        {
-            name: "Tsukiji Outer Market",
-            location: "Tsukiji, Tokyo",
-            rating: 4.5,
-            type: "Market/Food",
-            durationHours: 2,
-            groupSize: "Any",
-            price: 500,
-            description:
-                "A vibrant public market featuring numerous stalls selling fresh seafood, produce, kitchenware, and a wide array of delicious street food and small restaurants.",
+                "A reliable and clean option in a central location, offering basic amenities. Great for those prioritising location over luxury.",
         },
     ],
     diningOptions: [
         {
-            name: "Ichiran Ramen (Shibuya)",
-            location: "Shibuya, Tokyo",
+            name: "The Winding Stair",
+            location: "Lower Ormond Quay, Dublin 1",
             rating: 4.5,
-            cuisine: "Ramen",
-            priceRange: 1000,
+            cuisine: "Modern Irish",
+            priceRangePerPerson: 2000,
             description:
-                "A popular ramen chain known for its 'flavor concentration booths' that allow you to customize your ramen experience in a quiet, individual setting.",
+                "A charming restaurant with a focus on seasonal Irish ingredients and a great wine list. Offers an excellent value early bird menu.",
         },
         {
-            name: "Tempura Tsunahachi (Shinjuku)",
-            location: "Shinjuku, Tokyo",
-            rating: 4.2,
-            cuisine: "Tempura",
-            priceRange: 2500,
+            name: "Burk's Cafe",
+            location: "Grafton Street, Dublin 2",
+            rating: 3.9,
+            cuisine: "Cafe/Casual",
+            priceRangePerPerson: 800,
             description:
-                "Offers high-quality, freshly fried tempura at a reasonable price for a specialized restaurant. A good option for a slightly more upscale yet accessible meal.",
+                "Perfect for a quick and affordable breakfast or lunch, offering sandwiches, soups, and traditional Irish breakfast items.",
         },
         {
-            name: "Ueno Yabu Soba",
-            location: "Ueno, Tokyo",
-            rating: 4,
-            cuisine: "Soba",
-            priceRange: 1200,
-            description:
-                "A traditional soba noodle restaurant in Ueno with a long history, serving classic cold and hot soba dishes in a quaint setting.",
-        },
-        {
-            name: "Street Food at Nakamise-dori",
-            location: "Asakusa, Tokyo",
+            name: "Leo Burdock's Christ Church",
+            location: "Werburgh St, Dublin 8",
             rating: 4.3,
-            cuisine: "Japanese Snacks",
-            priceRange: 500,
+            cuisine: "Fish and Chips",
+            priceRangePerPerson: 1000,
             description:
-                "Explore the vibrant market leading to Senso-ji Temple for a variety of traditional Japanese snacks, sweets, and small bites like age-manju and ningyo-yaki.",
+                "A Dublin institution famous for its traditional fish and chips. A must-try for an authentic, budget-friendly meal.",
+        },
+        {
+            name: "The Brazen Head",
+            location: "Bridge Street Lower, Dublin 8",
+            rating: 4.4,
+            cuisine: "Traditional Irish Pub Food",
+            priceRangePerPerson: 1500,
+            description:
+                "Ireland's oldest pub, offering classic pub grub in a historic setting. A great place to soak in the atmosphere and enjoy a pint.",
         },
     ],
 };
+
 export default dummyDetails;

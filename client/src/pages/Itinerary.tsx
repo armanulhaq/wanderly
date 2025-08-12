@@ -40,6 +40,7 @@ const Itinerary = () => {
     if (loading) {
         return <ItineraryLoader />;
     }
+    console.log(itinerary);
 
     return (
         <>
