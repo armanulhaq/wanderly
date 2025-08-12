@@ -5,7 +5,7 @@ import dummyDetails from "../constants/dummyDetails";
 import details from "../assets/details.jpg";
 import Navbar from "../components/Navbar";
 
-const Itinerary = () => {
+const DummyItinerary = () => {
     const [itinerary, setItinerary] = useState(dummyDetails);
     const [loading, setLoading] = useState(false);
 
@@ -207,4 +207,4 @@ const Itinerary = () => {
     );
 };
 
-export default Itinerary;
+export default DummyItinerary;

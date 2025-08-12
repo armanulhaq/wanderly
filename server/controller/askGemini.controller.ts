@@ -38,6 +38,7 @@ const askGemini = async (req: Request, res: Response) => {
         - All dates must follow YYYY-MM-DD format.
         - All times must follow HH:mm (24-hour) format.
         - No text outside the JSON.
+        - All ratings should be out of 5.
 
         JSON structure (strict types):
 
@@ -48,7 +49,8 @@ const askGemini = async (req: Request, res: Response) => {
             "location": "string",
             "aiTripRating": number,
             "estimatedCost": number,
-            "overallWeather": string
+            "overallWeather": string,
+            "duration": number,
           },
           "dailyItinerary": [
             {

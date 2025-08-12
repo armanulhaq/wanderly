@@ -12,6 +12,7 @@ import {
 import storage from "redux-persist/lib/storage"; // This uses localStorage
 import { userSlice } from "./slices/user/user";
 import { tripSlice } from "./slices/trip/trip";
+import { itinerarySlice } from "./slices/itinerary/itinerary";
 
 // Persist config for trip data
 const tripPersistConfig = {
@@ -40,6 +41,7 @@ export const store = configureStore({
     reducer: {
         user: persistedUserReducer,
         trip: persistedTripReducer,
+        itinerary: itinerarySlice.reducer,
     },
     //redux allows us to save only serialisable data (boolean, string, number, array, object) in store.ts
     //but redux persists has to store non serialisable (functions, promises, etc.) too in order to do its job so writing this will tell redux to chill
