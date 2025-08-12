@@ -2,10 +2,10 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
-import connectDB from "./configs/DB.ts";
-import authenticationRoute from "./routes/authentication.route.ts";
-import googlePlacesRouter from "./routes/googlePlaces.route.ts";
-import askGeminiRouter from "./routes/askGemini.route.ts";
+import connectDB from "./configs/DB";
+import authenticationRoute from "./routes/authentication.route";
+import googlePlacesRouter from "./routes/googlePlaces.route";
+import askGeminiRouter from "./routes/askGemini.route";
 
 connectDB();
 dotenv.config();

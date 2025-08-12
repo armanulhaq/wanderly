@@ -1,7 +1,7 @@
 import type { Request, Response } from "express"; // tells compiler these are just types and don't find them for real at runtime
-import User from "../models/User.model.ts";
+import User from "../models/User.model";
 import bcrypt from "bcrypt";
-import { getUser, setUser } from "../middlewares/auth.ts";
+import { getUser, setUser } from "../middlewares/auth";
 
 const registerController = async (req: Request, res: Response) => {
     const { name, email, password } = req.body;

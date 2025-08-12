@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import getAutoComplete from "../controller/googlePlaces.controller.ts";
+import getAutoComplete from "../controller/googlePlaces.controller";
 
 dotenv.config();
 
