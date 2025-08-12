@@ -83,9 +83,8 @@ const Itinerary = () => {
                     </div>
                 </div>
 
-                {/* TRIP SUMMARY CARDS */}
                 <div className="flex md:flex-col items-center">
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 my-8 w-full">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 my-8 w-full">
                         <div className="bg-white p-2 rounded-lg border border-gray-200 transition-all hover:-translate-y-1 animate-fade-in">
                             <div className="p-2 text-center">
                                 <Calendar className="w-8 h-8  text-purple-600 mx-auto mb-2" />
@@ -117,17 +116,17 @@ const Itinerary = () => {
                                 </p>
                             </div>
                         </div>
-                    </div>
 
-                    <div className="bg-white p-2 w-[30%] rounded-lg border border-gray-200 transition-all hover:-translate-y-1 animate-fade-in">
-                        <div className="p-2 text-center">
-                            <Sun className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
-                            <p className="text-sm font-bold">
-                                Weather Forecast
-                            </p>
-                            <p className="text-xs">
-                                {itinerary?.tripSummary?.overallWeather}
-                            </p>
+                        <div className="bg-white p-2 rounded-lg border border-gray-200 transition-all hover:-translate-y-1 animate-fade-in">
+                            <div className="p-2 text-center">
+                                <Sun className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
+                                <p className="text-sm font-bold">
+                                    Weather Forecast
+                                </p>
+                                <p className="text-xs">
+                                    {itinerary?.tripSummary?.overallWeather}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -135,6 +134,7 @@ const Itinerary = () => {
                 {/* MAIN CONTENT */}
                 <div className="flex max-w-6xl mx-auto gap-6 flex-col md:flex-row pb-12 my-10">
                     {/* DAILY ITINERARY */}
+
                     <div className="px-6 py-4 flex-[3]">
                         {itinerary?.dailyItinerary?.map((day, dayIndex) => (
                             <div
@@ -181,7 +181,27 @@ const Itinerary = () => {
 
                     {/* SIDEBAR */}
                     <div className="rounded-lg flex-2 h-fit space-y-8 ">
-                        <div className="p-8 rounded-lg bg-white border border-gray-100">
+                        <div className="p-8 rounded-lg bg-amber-50 space-y-2 shadow-sm">
+                            <h3 className="flex items-center gap-2 font-bold text-xl text-gray-900 mb-3">
+                                <span>
+                                    <Lightbulb className="w-6 h-6 text-amber-600" />
+                                </span>
+                                Travel Tips
+                            </h3>
+                            <ul className="list-none space-y-3 text-sm text-gray-700">
+                                {itinerary?.travelTips?.map((tip, idx) => (
+                                    <li key={idx} className="space-y-1">
+                                        <div className="font-bold text-md">
+                                            {tip.title}:
+                                        </div>
+                                        <div className="text-sm text-gray-600/70">
+                                            {tip.description}
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="p-3 md:p-5 lg:p-8">
                             <h3 className="font-semibold flex items-center gap-2 text-lg text-gray-900 mb-3">
                                 <span>
                                     <Bed className="w-6 h-6 text-purple-600" />
@@ -193,7 +213,7 @@ const Itinerary = () => {
                                     (hotel, idx) => (
                                         <li
                                             key={idx}
-                                            className="bg-gray-50 space-y-2 p-5 rounded-lg border border-gray-200"
+                                            className="bg-gray-50 space-y-2 p-5 rounded-lg shadow-sm"
                                         >
                                             <img
                                                 src="https://plus.unsplash.com/premium_photo-1687960116497-0dc41e1808a2?q=80&w=2342&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -238,7 +258,7 @@ const Itinerary = () => {
                         </div>
 
                         {/* Dining Options */}
-                        <div className="p-8 rounded-lg border border-gray-100">
+                        <div className="p-3 md:p-5 lg:p-8">
                             <h3 className="font-semibold flex items-center gap-2 text-lg text-gray-900 mb-3">
                                 <span>
                                     <Utensils className="w-6 h-6 text-purple-600" />
@@ -250,7 +270,7 @@ const Itinerary = () => {
                                     (dining, idx) => (
                                         <li
                                             key={idx}
-                                            className="bg-gray-50 space-y-2 p-5 rounded-lg border border-gray-200"
+                                            className="bg-gray-50 space-y-2 p-5 rounded-lg shadow-sm"
                                         >
                                             <img
                                                 src="https://images.unsplash.com/photo-1574966739987-65e38db0f7ce?q=80&w=2342&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -297,26 +317,6 @@ const Itinerary = () => {
                         </div>
 
                         {/* Travel Tips */}
-                        <div className="p-8 rounded-lg bg-amber-50 border border-gray-100">
-                            <h3 className="flex items-center gap-2 font-bold text-xl text-gray-900 mb-3">
-                                <span>
-                                    <Lightbulb className="w-6 h-6 text-amber-600" />
-                                </span>
-                                Travel Tips
-                            </h3>
-                            <ul className="list-none space-y-3 text-sm text-gray-700">
-                                {itinerary?.travelTips?.map((tip, idx) => (
-                                    <li key={idx} className="space-y-1">
-                                        <div className="font-bold text-md">
-                                            {tip.title}:
-                                        </div>
-                                        <div className="text-sm text-gray-600/70">
-                                            {tip.description}
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
