@@ -13,11 +13,14 @@ const Navbar = () => {
     const logoutHandler = async () => {
         try {
             setLoading(true);
-            const res = await fetch("http://localhost:3000/api/auth/logout", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                credentials: "include",
-            });
+            const res = await fetch(
+                `${import.meta.env.VITE_BACKEND_URL}/api/auth/logout`,
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    credentials: "include",
+                }
+            );
             if (!res.ok) throw new Error("Failed to logout");
             dispatch(setUser({ name: "", email: "" }));
             navigate("/login");

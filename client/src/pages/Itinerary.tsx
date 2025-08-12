@@ -27,13 +27,16 @@ const Itinerary = () => {
         async function generateItinerary() {
             try {
                 setLoading(true);
-                const res = await fetch("http://localhost:3000/api/askgemini", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(trip),
-                });
+                const res = await fetch(
+                    `${import.meta.env.VITE_BACKEND_URL}/api/askgemini`,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(trip),
+                    }
+                );
                 if (!res.ok) throw new Error("Failed to generate trip");
                 const data = await res.json();
                 const parsedItinerary = JSON.parse(data.response);

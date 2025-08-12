@@ -19,13 +19,16 @@ function App() {
     useEffect(() => {
         const checkUser = async () => {
             try {
-                const res = await fetch("http://localhost:3000/api/auth/me", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    credentials: "include",
-                });
+                const res = await fetch(
+                    `${import.meta.env.VITE_BACKEND_URL}/api/auth/me`,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        credentials: "include",
+                    }
+                );
                 if (!res.ok) {
                     // If token invalid, clear Redux user and send to login
                     dispatch(setUser({ name: "", email: "" }));

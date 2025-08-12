@@ -16,12 +16,15 @@ const Login = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            const res = await fetch("http://localhost:3000/api/auth/login", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password }),
-                credentials: "include",
-            });
+            const res = await fetch(
+                `${import.meta.env.VITE_BACKEND_URL}/api/auth/login`,
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password }),
+                    credentials: "include",
+                }
+            );
             if (!res.ok) throw new Error("Failed to login");
             const data = await res.json();
             dispatch(setUser(data.user));

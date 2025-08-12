@@ -15,13 +15,16 @@ const Register = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            const res = await fetch("http://localhost:3000/api/auth/register", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ name, email, password }),
-            });
+            const res = await fetch(
+                `${import.meta.env.VITE_BACKEND_URL}/api/auth/register`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ name, email, password }),
+                }
+            );
             if (!res.ok) {
                 throw new Error("Failed to register");
             }
