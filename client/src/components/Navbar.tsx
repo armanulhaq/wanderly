@@ -23,7 +23,7 @@ const Navbar = () => {
             );
             if (!res.ok) throw new Error("Failed to logout");
             dispatch(setUser({ name: "", email: "" }));
-            navigate("/login");
+            navigate("/");
         } catch (error) {
             console.log(error);
         } finally {

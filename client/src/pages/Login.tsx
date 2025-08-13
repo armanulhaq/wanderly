@@ -36,6 +36,32 @@ const Login = () => {
         }
     };
 
+    const handleGuestLogin = async () => {
+        try {
+            setLoading(true);
+            const res = await fetch(
+                `${import.meta.env.VITE_BACKEND_URL}/api/auth/login`,
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ 
+                        email: "guest@gmail.com", 
+                        password: "guest" 
+                    }),
+                    credentials: "include",
+                }
+            );
+            if (!res.ok) throw new Error("Failed to login as guest");
+            const data = await res.json();
+            dispatch(setUser(data.user));
+            navigate("/plan");
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <div className="bg-subtle-purple-light flex items-center justify-center min-h-screen">
             <Navbar />
@@ -81,8 +107,19 @@ const Login = () => {
                 <button
                     type="submit"
                     className="mt-6 w-full h-11 rounded-full text-white bg-purple-600 hover:bg-purple-700 transition-colors font-medium cursor-pointer"
+                    disabled={loading}
                 >
                     {loading ? "Logging in..." : "Login"}
+                </button>
+
+                {/* Guest Login */}
+                <button
+                    type="button"
+                    onClick={handleGuestLogin}
+                    className="mt-3 w-full h-11 rounded-full text-purple-600 bg-white border-2 border-purple-600 hover:bg-purple-50 transition-colors font-medium cursor-pointer"
+                    disabled={loading}
+                >
+                    {loading ? "Logging in..." : "Continue as Guest"}
                 </button>
 
                 {/* Signup link */}
