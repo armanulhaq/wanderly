@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 import { useAppSelector } from "../redux/hooks";
 import { useDispatch } from "react-redux";
 import { setItinerary } from "../redux/slices/itinerary/itinerary";
-import details from "../assets/details.jpg";
 import {
     MapPin,
     Clock,
@@ -22,6 +21,29 @@ const Itinerary = () => {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     const itinerary = useAppSelector((state) => state.itinerary.itinerary);
+
+    const hotelStockImages = [
+        "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg",
+        "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg",
+        "https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg",
+    ];
+
+    const diningStockImages = [
+        "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg",
+        "https://images.pexels.com/photos/1449773/pexels-photo-1449773.jpeg",
+        "https://images.pexels.com/photos/239975/pexels-photo-239975.jpeg",
+    ];
+
+    const itineraryStockImages = [
+        "https://images.unsplash.com/photo-1567426681689-5645da216ba8?q=80&w=2346&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1707744567140-ca1044dbb13e?q=80&w=2336&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.pexels.com/photos/19469036/pexels-photo-19469036.jpeg",
+        "https://images.pexels.com/photos/7205917/pexels-photo-7205917.jpeg",
+        "https://images.pexels.com/photos/2396132/pexels-photo-2396132.jpeg",
+        "https://images.pexels.com/photos/4134644/pexels-photo-4134644.jpeg",
+        "https://images.pexels.com/photos/7119387/pexels-photo-7119387.jpeg",
+        "https://images.pexels.com/photos/8780847/pexels-photo-8780847.jpeg",
+    ];
 
     useEffect(() => {
         async function generateItinerary() {
@@ -53,15 +75,20 @@ const Itinerary = () => {
     if (loading) {
         return <ItineraryLoader />;
     }
-    console.log(itinerary);
 
     return (
         <div className="mx-5 ">
             <Navbar />
             <div className="min-h-screen max-w-6xl mx-auto">
-                <div className="relative h-72 overflow-hidden rounded-xl mt-18 shadow-lg">
+                <div className="relative h-84 overflow-hidden rounded-xl mt-18 shadow-lg">
                     <img
-                        src={details}
+                        src={
+                            itineraryStockImages[
+                                Math.floor(
+                                    Math.random() * itineraryStockImages.length
+                                )
+                            ]
+                        }
                         alt="Itinerary Details"
                         className="w-full h-full object-cover"
                     />
@@ -214,7 +241,7 @@ const Itinerary = () => {
                                             className="bg-gray-50 space-y-2 p-5 rounded-lg shadow-sm"
                                         >
                                             <img
-                                                src="https://plus.unsplash.com/premium_photo-1687960116497-0dc41e1808a2?q=80&w=2342&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                src={hotelStockImages[idx]}
                                                 alt={hotel.name}
                                                 className="w-full h-48 object-cover mb-2 rounded"
                                             />
@@ -270,7 +297,7 @@ const Itinerary = () => {
                                             className="bg-gray-50 space-y-2 p-5 rounded-lg shadow-sm"
                                         >
                                             <img
-                                                src="https://images.unsplash.com/photo-1574966739987-65e38db0f7ce?q=80&w=2342&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                src={diningStockImages[idx]}
                                                 alt={dining.name}
                                                 className="w-full h-48 object-cover mb-2 rounded"
                                             />

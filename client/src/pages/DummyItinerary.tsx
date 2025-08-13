@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import ItineraryLoader from "../components/ItineraryLoader";
 import Navbar from "../components/Navbar";
 import dummyDetails from "../constants/dummyDetails";
-import details from "../assets/details.jpg";
 import {
     MapPin,
     Clock,
@@ -39,9 +38,9 @@ const DummyItinerary = () => {
         <div className="mx-5">
             <Navbar />
             <div className="min-h-screen max-w-6xl mx-auto">
-                <div className="relative h-72 overflow-hidden rounded-xl mt-18 shadow-lg">
+                <div className="relative h-84 overflow-hidden rounded-xl mt-18 shadow-lg">
                     <img
-                        src={details}
+                        src="https://images.unsplash.com/photo-1459789587767-1a947412a440?q=80&w=2356&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         alt="Itinerary Details"
                         className="w-full h-full object-cover"
                     />
