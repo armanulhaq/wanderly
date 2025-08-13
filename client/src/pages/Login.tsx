@@ -36,7 +36,8 @@ const Login = () => {
         }
     };
 
-    const handleGuestLogin = async () => {
+    const handleGuestLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         try {
             setLoading(true);
             const res = await fetch(

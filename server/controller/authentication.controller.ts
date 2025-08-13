@@ -47,6 +47,7 @@ const loginController = async (req: Request, res: Response) => {
             httpOnly: true, // Prevents JS access — good for security
             secure: true,
             maxAge: 1000 * 60 * 60, // 1 hour
+            sameSite: "none",
         });
         return res
             .status(200)
