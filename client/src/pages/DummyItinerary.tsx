@@ -18,6 +18,18 @@ const DummyItinerary = () => {
     const [itinerary, setItinerary] = useState(dummyDetails);
     const [loading, setLoading] = useState(false);
 
+    const hotelStockImages = [
+        "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg",
+        "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg",
+        "https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg",
+    ];
+
+    const diningStockImages = [
+        "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg",
+        "https://images.pexels.com/photos/1449773/pexels-photo-1449773.jpeg",
+        "https://images.pexels.com/photos/239975/pexels-photo-239975.jpeg",
+    ];
+
     const dummyGenerateTrip = () => {
         setLoading(true);
         setTimeout(() => {
@@ -193,7 +205,7 @@ const DummyItinerary = () => {
                                             className="bg-gray-50 space-y-2 p-5 rounded-lg shadow-sm"
                                         >
                                             <img
-                                                src="https://plus.unsplash.com/premium_photo-1687960116497-0dc41e1808a2?q=80&w=2342&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                src={hotelStockImages[idx]}
                                                 alt={hotel.name}
                                                 className="w-full h-48 object-cover mb-2 rounded"
                                             />
@@ -242,7 +254,7 @@ const DummyItinerary = () => {
                                             className="bg-gray-50 space-y-2 p-5 rounded-lg shadow-sm"
                                         >
                                             <img
-                                                src="https://images.unsplash.com/photo-1574966739987-65e38db0f7ce?q=80&w=2342&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                src={diningStockImages[idx]}
                                                 alt={dining.name}
                                                 className="w-full h-48 object-cover mb-2 rounded"
                                             />
