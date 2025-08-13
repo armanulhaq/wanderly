@@ -76,7 +76,11 @@ const authController = (req: Request, res: Response) => {
 };
 
 const logoutController = (req: Request, res: Response) => {
-    res.clearCookie("token");
+    res.clearCookie("token", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+    });
     res.json({ message: "Logout successful" });
 };
 
