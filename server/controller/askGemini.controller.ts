@@ -22,6 +22,7 @@ const askGemini = async (req: Request, res: Response) => {
         - All times use HH:mm 24h.
         - Numbers should not contain commas or currency symbols.
         - Ratings are numbers (max 1 decimal).
+        - You have to recommend strictly 3 accommodations and 3 dining options.
         - Output exactly one JSON object that matches this TypeScript type:
 
         User inputs:

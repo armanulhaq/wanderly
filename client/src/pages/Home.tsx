@@ -1,9 +1,12 @@
 import { Sparkles } from "lucide-react";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../redux/hooks";
 
 const Home = () => {
     const navigate = useNavigate();
+    const user = useAppSelector((state) => state.user);
+    console.log("user", user);
     return (
         <>
             <Navbar />
@@ -28,7 +31,13 @@ const Home = () => {
 
                         <div className="mt-8 flex flex-col sm:flex-row gap-4">
                             <button
-                                onClick={() => navigate("/plan")}
+                                onClick={() => {
+                                    if (user.name) {
+                                        navigate("/plan");
+                                    } else {
+                                        navigate("/login");
+                                    }
+                                }}
                                 className="flex items-center justify-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors cursor-pointer"
                             >
                                 <Sparkles className="w-5 h-5" />
