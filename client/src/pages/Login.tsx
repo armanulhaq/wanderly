@@ -52,7 +52,7 @@ const Login = () => {
             const data = await res.json();
             dispatch(setUser(data.user));
             navigate("/plan");
-        } catch (err) {
+        } catch (err: any) {
             setError(err.message);
         } finally {
             setLoading(false);
