@@ -102,7 +102,7 @@ const Itinerary = () => {
                                     {itinerary?.tripSummary?.location}
                                 </span>
                             </div>
-                            <h1 className="text-4xl font-bold mb-2 drop-shadow-lg">
+                            <h1 className="text-lg md:text-2xl xl:text-4xl font-bold mb-2 drop-shadow-lg">
                                 {itinerary?.tripSummary?.title}
                             </h1>
                             <p className="text-md text-gray-200 drop-shadow">

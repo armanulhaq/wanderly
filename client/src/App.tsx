@@ -32,7 +32,7 @@ function App() {
                 if (!res.ok) {
                     // If token invalid, clear Redux user and send to login
                     dispatch(setUser({ name: "", email: "" }));
-                    navigate("/login");
+                    navigate("/");
                     return;
                 }
                 if (res.ok) {
