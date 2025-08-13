@@ -54,7 +54,6 @@ const Register = () => {
                     </p>
                 </div>
 
-                {/* Name Input */}
                 <div className="flex items-center w-full mt-4 bg-white border border-gray-300 h-12 rounded-full overflow-hidden pl-6 gap-3">
                     <User className="w-5 h-5 text-gray-600" />
                     <input
@@ -67,7 +66,6 @@ const Register = () => {
                     />
                 </div>
 
-                {/* Email Input */}
                 <div className="flex items-center w-full mt-4 bg-white border border-gray-300 h-12 rounded-full overflow-hidden pl-6 gap-3">
                     <Mail className="w-5 h-5 text-gray-600" />
                     <input
@@ -79,8 +77,6 @@ const Register = () => {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
-
-                {/* Password Input */}
                 <div className="flex items-center mt-4 w-full bg-white border border-gray-300 h-12 rounded-full overflow-hidden pl-6 gap-3">
                     <Lock className="w-5 h-5 text-gray-600" />
                     <input
@@ -93,7 +89,6 @@ const Register = () => {
                     />
                 </div>
 
-                {/* Submit Button */}
                 <button
                     type="submit"
                     className="mt-6 w-full h-11 rounded-full text-white bg-purple-600 hover:bg-purple-700 transition-colors font-medium cursor-pointer"
@@ -101,8 +96,6 @@ const Register = () => {
                 >
                     {loading ? "Registering..." : "Sign Up"}
                 </button>
-
-                {/* Login Link */}
                 <p className="text-gray-600 text-sm mt-6 text-center">
                     Already have an account?{" "}
                     <span

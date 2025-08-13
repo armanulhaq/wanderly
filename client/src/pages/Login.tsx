@@ -44,9 +44,9 @@ const Login = () => {
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ 
-                        email: "guest@gmail.com", 
-                        password: "guest" 
+                    body: JSON.stringify({
+                        email: "guest@gmail.com",
+                        password: "guest",
                     }),
                     credentials: "include",
                 }
@@ -76,8 +76,6 @@ const Login = () => {
                         Please sign in to continue
                     </p>
                 </div>
-
-                {/* Email */}
                 <div className="flex items-center w-full mt-8 bg-white border border-gray-300 h-12 rounded-full pl-6 gap-3">
                     <Mail className="w-5 h-5 text-gray-500" />
                     <input
@@ -90,7 +88,6 @@ const Login = () => {
                     />
                 </div>
 
-                {/* Password */}
                 <div className="flex items-center mt-4 w-full bg-white border border-gray-300 h-12 rounded-full pl-6 gap-3">
                     <Lock className="w-5 h-5 text-gray-500" />
                     <input
@@ -102,8 +99,6 @@ const Login = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-
-                {/* Submit */}
                 <button
                     type="submit"
                     className="mt-6 w-full h-11 rounded-full text-white bg-purple-600 hover:bg-purple-700 transition-colors font-medium cursor-pointer"
@@ -112,7 +107,6 @@ const Login = () => {
                     {loading ? "Logging in..." : "Login"}
                 </button>
 
-                {/* Guest Login */}
                 <button
                     type="button"
                     onClick={handleGuestLogin}
@@ -122,7 +116,6 @@ const Login = () => {
                     {loading ? "Logging in..." : "Continue as Guest"}
                 </button>
 
-                {/* Signup link */}
                 <p className="text-gray-600 text-sm mt-6 text-center">
                     Don’t have an account?{" "}
                     <span

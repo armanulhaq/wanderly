@@ -34,7 +34,6 @@ const Navbar = () => {
     return (
         <header className="absolute top-0 left-0 right-0 z-10 bg-white backdrop-blur-sm">
             <nav className="max-w-6xl mx-auto px-8 md:px-12 py-4 flex justify-between items-center">
-                {/* Logo */}
                 <div
                     onClick={() => navigate("/")}
                     className="text-xl font-bold text-gray-900 cursor-pointer"
@@ -42,7 +41,6 @@ const Navbar = () => {
                     Wanderly
                 </div>
 
-                {/* Buttons */}
                 <div className="flex items-center gap-4">
                     {user.name ? (
                         <div className="flex items-center gap-6">

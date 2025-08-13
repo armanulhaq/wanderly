@@ -59,7 +59,6 @@ const Itinerary = () => {
         <div className="mx-5 ">
             <Navbar />
             <div className="min-h-screen max-w-6xl mx-auto">
-                {/* HERO SECTION */}
                 <div className="relative h-72 overflow-hidden rounded-xl mt-18 shadow-lg">
                     <img
                         src={details}
@@ -134,10 +133,7 @@ const Itinerary = () => {
                     </div>
                 </div>
 
-                {/* MAIN CONTENT */}
                 <div className="flex max-w-6xl mx-auto gap-6 flex-col md:flex-row pb-12 my-10">
-                    {/* DAILY ITINERARY */}
-
                     <div className="px-6 py-4 flex-[3]">
                         {itinerary?.dailyItinerary?.map((day, dayIndex) => (
                             <div
@@ -182,7 +178,6 @@ const Itinerary = () => {
                         ))}
                     </div>
 
-                    {/* SIDEBAR */}
                     <div className="rounded-lg flex-2 h-fit space-y-8 ">
                         <div className="p-8 rounded-lg bg-amber-50 space-y-2 shadow-sm">
                             <h3 className="flex items-center gap-2 font-bold text-xl text-gray-900 mb-3">
@@ -260,7 +255,6 @@ const Itinerary = () => {
                             </ul>
                         </div>
 
-                        {/* Dining Options */}
                         <div className="p-3 md:p-5 lg:p-8">
                             <h3 className="font-semibold flex items-center gap-2 text-lg text-gray-900 mb-3">
                                 <span>
@@ -318,8 +312,6 @@ const Itinerary = () => {
                                 )}
                             </ul>
                         </div>
-
-                        {/* Travel Tips */}
                     </div>
                 </div>
             </div>
