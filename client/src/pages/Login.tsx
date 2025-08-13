@@ -5,59 +5,55 @@ import { setUser } from "../redux/slices/user/user";
 import Navbar from "../components/Navbar";
 import { Lock, Mail } from "lucide-react";
 
+const GUEST_CREDENTIALS = { email: "guest@gmail.com", password: "guest" };
+
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState<string | null>(null);
 
-    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleLogin = async (
+        e:
+            | React.FormEvent<HTMLFormElement>
+            | React.MouseEvent<HTMLButtonElement>,
+        isGuest = false
+    ) => {
         e.preventDefault();
+        setError(null);
+        setLoading(true);
         try {
-            setLoading(true);
+            const credentials = isGuest
+                ? GUEST_CREDENTIALS
+                : { email, password };
             const res = await fetch(
                 `${import.meta.env.VITE_BACKEND_URL}/api/auth/login`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email, password }),
+                    body: JSON.stringify(credentials),
                     credentials: "include",
                 }
             );
-            if (!res.ok) throw new Error("Failed to login");
-            const data = await res.json();
-            dispatch(setUser(data.user));
-            navigate("/plan");
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const handleGuestLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        try {
-            setLoading(true);
-            const res = await fetch(
-                `${import.meta.env.VITE_BACKEND_URL}/api/auth/login`,
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        email: "guest@gmail.com",
-                        password: "guest",
-                    }),
-                    credentials: "include",
+            if (!res.ok) {
+                let data;
+                try {
+                    data = await res.json();
+                } catch {
+                    data = {};
                 }
-            );
-            if (!res.ok) throw new Error("Failed to login as guest");
+                throw new Error(
+                    data.message ||
+                        (isGuest ? "Failed to login as guest" : "Login failed")
+                );
+            }
             const data = await res.json();
             dispatch(setUser(data.user));
             navigate("/plan");
-        } catch (error) {
-            console.log(error);
+        } catch (err) {
+            setError(err.message);
         } finally {
             setLoading(false);
         }
@@ -67,7 +63,7 @@ const Login = () => {
         <div className="bg-subtle-purple-light flex items-center justify-center min-h-screen">
             <Navbar />
             <form
-                onSubmit={handleLogin}
+                onSubmit={(e) => handleLogin(e)}
                 className="max-w-md w-full bg-white border border-gray-200 rounded-2xl mx-auto px-8 md:px-12 py-10 shadow-lg"
             >
                 {/* Heading */}
@@ -110,12 +106,20 @@ const Login = () => {
 
                 <button
                     type="button"
-                    onClick={handleGuestLogin}
+                    onClick={(e) => handleLogin(e, true)}
                     className="mt-3 w-full h-11 rounded-full text-purple-600 bg-white border-2 border-purple-600 hover:bg-purple-50 transition-colors font-medium cursor-pointer"
                     disabled={loading}
                 >
-                    {loading ? "Logging in..." : "Continue as Guest"}
+                    Continue as Guest
                 </button>
+                {error && (
+                    <div
+                        className="mt-4 text-red-600 text-sm"
+                        aria-live="polite"
+                    >
+                        {error}
+                    </div>
+                )}
 
                 <p className="text-gray-600 text-sm mt-6 text-center">
                     Don’t have an account?{" "}
