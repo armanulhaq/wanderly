@@ -18,14 +18,12 @@ import { itinerarySlice } from "./slices/itinerary/itinerary";
 const tripPersistConfig = {
     key: "trip",
     storage, //store in localStorage
-    whitelist: ["destination", "from", "to", "budget", "people"], //whitelist the trip data
 };
 
 // Persist config for user data
 const userPersistConfig = {
     key: "user",
     storage,
-    whitelist: ["name", "email", "isAuthenticated"], //whitelist the user data
 };
 
 const persistedTripReducer = persistReducer(
